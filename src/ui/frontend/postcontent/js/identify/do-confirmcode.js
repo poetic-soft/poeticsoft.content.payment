@@ -116,7 +116,7 @@ export default ($, $wrapper, email, code) => {
 
         if(data.result == 'ok') {
           
-          $codeconfirminput.val(data.code)
+          // $codeconfirminput.val(data.code)
 
           message(
             $, 

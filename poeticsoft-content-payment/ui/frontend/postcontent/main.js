@@ -128,7 +128,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     }).then(function (data) {
       if (data.result == 'ok') {
-        $codeconfirminput.val(data.code);
+        // $codeconfirminput.val(data.code)
+
         (0,_common_message__WEBPACK_IMPORTED_MODULE_1__["default"])($, $wrapper, 'Se ha reenviado el código.', 'Info');
       }
     })["catch"](function (error) {
