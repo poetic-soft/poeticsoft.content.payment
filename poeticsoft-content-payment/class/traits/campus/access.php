@@ -31,12 +31,12 @@ trait PCP_Campus_Access {
 
   public function canaccess_causenotincampus($postid) {  
 
-    $cache_key = "pcp_canaccess_causenotincampus_{$postid}";
-    $cached = get_transient($cache_key);
-    if($cached) {
+    // $cache_key = "pcp_canaccess_causenotincampus_{$postid}";
+    // $cached = get_transient($cache_key);
+    // if($cached) {
 
-      return $cached === 'true';
-    }   
+    //   return $cached === 'true';
+    // }   
      
     $canaccess = 'false';
 
@@ -56,19 +56,19 @@ trait PCP_Campus_Access {
       }      
     }
     
-    set_transient($cache_key, $canaccess, 600);
+    // set_transient($cache_key, $canaccess, 600);
 
     return $canaccess === 'true';
   } 
   
   public function canaccess_causeisadmin() {  
 
-    $cache_key = "pcp_canaccess_causeisadmin";
-    $cached = get_transient($cache_key);
-    if($cached) {
+    // $cache_key = "pcp_canaccess_causeisadmin";
+    // $cached = get_transient($cache_key);
+    // if($cached) {
 
-        return $cached === 'true';
-    }   
+    //     return $cached === 'true';
+    // }   
 
     $current_user = wp_get_current_user();
     $allowadmin = $this->get_allow_admin();
@@ -86,7 +86,7 @@ trait PCP_Campus_Access {
       $canaccess = 'true';
     }    
     
-    set_transient($cache_key, $canaccess, 600);
+    // set_transient($cache_key, $canaccess, 600);
 
     return $canaccess === 'true';
   }
@@ -95,12 +95,12 @@ trait PCP_Campus_Access {
     $postid
   ) {
 
-    $cache_key = "pcp_canaccess_causeisfree_{$postid}";
-    $cached = get_transient($cache_key);      
-    if($cached) {
+    // $cache_key = "pcp_canaccess_causeisfree_{$postid}";
+    // $cached = get_transient($cache_key);      
+    // if($cached) {
 
-      return $cached === 'true';
-    }    
+    //   return $cached === 'true';
+    // }    
       
     $canaccess = 'false';
 
@@ -118,7 +118,7 @@ trait PCP_Campus_Access {
       }
     }
     
-    set_transient($cache_key, $canaccess, 600);
+    // set_transient($cache_key, $canaccess, 600);
 
     return $canaccess == 'true';
   }
@@ -153,12 +153,12 @@ trait PCP_Campus_Access {
       return false;
     }
 
-    $cache_key = "pcp_canaccess_bypostpaid_{$postid}_{$email}";
-    $cached = get_transient($cache_key);      
-    if($cached) {
+    // $cache_key = "pcp_canaccess_bypostpaid_{$postid}_{$email}";
+    // $cached = get_transient($cache_key);      
+    // if($cached) {
 
-      return $cached === 'true';
-    }   
+    //   return $cached === 'true';
+    // }   
       
     $canaccess = 'false';
 
@@ -255,7 +255,7 @@ trait PCP_Campus_Access {
         }
       }
 
-      set_transient($cache_key, $canaccess, 600);
+      // set_transient($cache_key, $canaccess, 600);
 
       return $canaccess == 'true';
 
@@ -267,12 +267,12 @@ trait PCP_Campus_Access {
 
   public function canaccess_causechildaccesible($postid) {    
 
-    $cache_key = "pcp_canaccess_causechildaccesible_{$postid}";
-    $cached = get_transient($cache_key);      
-    if($cached) {
+    // $cache_key = "pcp_canaccess_causechildaccesible_{$postid}";
+    // $cached = get_transient($cache_key);      
+    // if($cached) {
 
-      return $cached === 'true';
-    }   
+    //   return $cached === 'true';
+    // }   
     
     $canaccess = 'false';
 
@@ -298,7 +298,7 @@ trait PCP_Campus_Access {
         )
       ) { 
     
-        set_transient($cache_key, $canaccess, 600);
+        // set_transient($cache_key, $canaccess, 600);
 
         return false;
       }
@@ -333,19 +333,19 @@ trait PCP_Campus_Access {
       }
     }
         
-    set_transient($cache_key, $canaccess, 600);
+    // set_transient($cache_key, $canaccess, 600);
 
     return $canaccess == 'true'; 
   }
   
   public function canaccess($postid) {  
 
-    $cache_key = "pcp_canaccess_{$postid}";
-    $cached = get_transient($cache_key);
-    if($cached) {
+    // $cache_key = "pcp_canaccess_{$postid}";
+    // $cached = get_transient($cache_key);
+    // if($cached) {
 
-      return $cached === 'true';
-    }   
+    //   return $cached === 'true';
+    // }   
      
     $canaccess = 'false';
     
@@ -374,35 +374,35 @@ trait PCP_Campus_Access {
       $canaccess = 'true';     
     }
     
-    set_transient($cache_key, $canaccess, 600);
+    // set_transient($cache_key, $canaccess, 600);
 
     return $canaccess === 'true';
   } 
 
   public function clear_access_cache($email, $postid = null) {
 
-    global $wpdb;
+  //   global $wpdb;
 
-    if($postid) {
+  //   if($postid) {
 
-      $cache_key = "pcp_access_{$postid}_{$email}";
-      delete_transient($cache_key);
+  //     $cache_key = "pcp_access_{$postid}_{$email}";
+  //     delete_transient($cache_key);
 
-    } else {
+  //   } else {
 
-      $tablename = $wpdb->prefix . 'payment_pays';
-      $payments = $wpdb->get_results(
-        $wpdb->prepare(
-          "SELECT DISTINCT post_id FROM {$tablename} WHERE user_mail = %s",
-          $email
-        )
-      );
+  //     $tablename = $wpdb->prefix . 'payment_pays';
+  //     $payments = $wpdb->get_results(
+  //       $wpdb->prepare(
+  //         "SELECT DISTINCT post_id FROM {$tablename} WHERE user_mail = %s",
+  //         $email
+  //       )
+  //     );
 
-      foreach($payments as $payment) {
+  //     foreach($payments as $payment) {
 
-        $cache_key = "pcp_access_{$payment->post_id}_{$email}";
-        delete_transient($cache_key);
-      }
-    }
+  //       $cache_key = "pcp_access_{$payment->post_id}_{$email}";
+  //       delete_transient($cache_key);
+  //     }
+  //   }
   }
 }

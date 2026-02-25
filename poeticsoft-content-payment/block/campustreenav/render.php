@@ -40,6 +40,10 @@ defined('ABSPATH') || exit;
   $_COOKIE['useremail']
   :
   false;
+  
+  $isadminandcanviewall = current_user_can('manage_options')
+  &&
+  get_option('pcp_settings_campus_roles_access');
 
   $usercontents = [];
   
@@ -134,6 +138,7 @@ defined('ABSPATH') || exit;
     $parentIsUser = false, 
     $parentIsFree = false
   ) use (
+    $isadminandcanviewall,
     &$buildObjectTree
   ) {
     
@@ -165,7 +170,7 @@ defined('ABSPATH') || exit;
       $pagePath = get_page_uri($page['id']);
       $hasChildren = isset($page['pages']) && count($page['pages']) > 0;
       
-      $visible = $parentIsUser || $isThisNodeUser || $hasWithinUser || $hasWithinFree;
+      $visible = $isadminandcanviewall || $parentIsUser || $isThisNodeUser || $hasWithinUser || $hasWithinFree;
       
       $pagedata[] = [
         'pageId' => $page['id'],
