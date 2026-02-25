@@ -25,10 +25,12 @@ export const rowform = (
           type="button"
           class="Close button button-secondary"
         >x</button>
-        <button 
-          type="button"
-          class="InitDate button button-secondary"
-        >📅</button>
+        <!--
+          <button 
+            type="button"
+            class="InitDate button button-secondary"
+          >📅</button>
+        -->
       </div> 
     </div>
     <div class="PriceForm"></div>

@@ -182,7 +182,7 @@ function validate(uuid) {
   \**************************************************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"poeticsoft/campusrelatedcontent","title":"Campus Contenido Relacionado","description":"Contenidos relacionados con la página actual","category":"poeticsoft","icon":"media-archive","keywords":[],"textdomain":"poeticsoft","version":"1.0.0","supports":{"align":["left","center","right"],"anchor":false,"customClassName":true,"className":true,"html":false,"__experimentalBorder":{"color":true,"radius":true,"style":true,"width":true},"border":{"color":true,"radius":true,"style":true,"width":true},"spacing":{"margin":true,"padding":true},"dimensions":{"minHeight":true,"width":true}},"attributes":{"blockId":{"type":"string","default":""},"refClientId":{"type":"string","default":""},"title":{"type":"string","default":"Título"},"sectionHeadingType":{"type":"string","default":"h3"},"areaHeadingType":{"type":"string","default":"h4"},"includesMode":{"type":"string","default":""},"tags":{"type":"string","default":"[]"},"mode":{"type":"string","default":"complete"},"visibility":{"type":"string","default":"visiblealways"}},"editorScript":"file:./build/editor.js","editorStyle":"file:./build/editor.css","viewScript":"file:./build/view.js","viewStyle":"file:./build/view.css","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"poeticsoft/campusrelatedcontent","title":"Campus Contenido Relacionado","description":"Contenidos relacionados con la página actual","category":"poeticsoft","icon":"media-archive","keywords":[],"textdomain":"poeticsoft","version":"1.0.0","supports":{"align":["left","center","right"],"anchor":false,"customClassName":true,"className":true,"html":false,"__experimentalBorder":{"color":true,"radius":true,"style":true,"width":true},"border":{"color":true,"radius":true,"style":true,"width":true},"spacing":{"margin":true,"padding":true},"dimensions":{"minHeight":true,"width":true}},"attributes":{"blockId":{"type":"string","default":""},"refClientId":{"type":"string","default":""},"title":{"type":"string","default":"Título"},"sectionHeadingType":{"type":"string","default":"h3"},"areaHeadingType":{"type":"string","default":"h4"},"includesMode":{"type":"string","default":""},"tags":{"type":"string","default":""},"mode":{"type":"string","default":"complete"},"visibility":{"type":"string","default":"visiblealways"}},"editorScript":"file:./build/editor.js","editorStyle":"file:./build/editor.css","viewScript":"file:./build/view.js","viewStyle":"file:./build/view.css","render":"file:./render.php"}');
 
 /***/ }),
 
@@ -447,15 +447,16 @@ var Edit = function Edit(props) {
     }
     apiFetch({
       path: '/wp/v2/tags?per_page=-1'
-    }).then(function (tags) {
-      setAvailableTags(tags.map(function (tag) {
+    }).then(function (availabletags) {
+      setAvailableTags(availabletags.map(function (tag) {
         return {
           label: tag.name,
           value: tag.id.toString()
         };
       }));
     });
-    setSelectedTags(JSON.parse(tags));
+    var savedtags = tags ? tags : '[]';
+    setSelectedTags(JSON.parse(savedtags));
   }, []);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(InspectorControls, null, /*#__PURE__*/React.createElement(PanelBody, {
     title: "Opciones del Bloque",

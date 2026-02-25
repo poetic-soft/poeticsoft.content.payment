@@ -39,6 +39,8 @@ if(
 
   $tags = json_decode($tags);
 
+  $tags = $tags ? $tags : [];
+
   $tagids = [];
 
   if(

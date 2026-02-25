@@ -11,7 +11,7 @@ require_once __DIR__ . '/traits/admin/fields.php';
 require_once __DIR__ . '/traits/admin/calendar.php';   
 require_once __DIR__ . '/traits/admin/pageprice.php';   
 require_once __DIR__ . '/traits/admin/pageslist.php';    
-require_once __DIR__ . '/traits/admin/pageinitdate.php';   
+// require_once __DIR__ . '/traits/admin/pageinitdate.php';   
 require_once __DIR__ . '/traits/admin/payments.php';    
 require_once __DIR__ . '/traits/admin/ctas.php';
 require_once __DIR__ . '/traits/api/api.php';
@@ -49,7 +49,7 @@ class Poeticsoft_Content_Payment {
   use PCP_Admin_Calendar;
   use PCP_Admin_Pageprice;
   use PCP_Admin_Pageslist;
-  use PCP_Admin_PageInitdate;
+  // use PCP_Admin_PageInitdate;
   use PCP_Admin_Payments;
   use PCP_Admin_CTAS;
   use PCP_API;
@@ -100,7 +100,7 @@ class Poeticsoft_Content_Payment {
     $this->register_pcp_admin_calendar(); 
     $this->register_pcp_admin_pageprice(); 
     $this->register_pcp_admin_pageslist();  
-    $this->register_pcp_admin_pageinitdate(); 
+    // $this->register_pcp_admin_pageinitdate(); 
     $this->register_pcp_admin_payments(); 
     $this->register_pcp_admin_ctas();
     $this->register_pcp_api(); 

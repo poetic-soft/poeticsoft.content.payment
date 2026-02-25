@@ -127,10 +127,10 @@ const Edit = props => {
     apiFetch({ 
       path: '/wp/v2/tags?per_page=-1' 
     })
-    .then(tags => {
+    .then(availabletags => {
       
       setAvailableTags(
-        tags.map(
+        availabletags.map(
           tag => ({
             label: tag.name,
             value: tag.id.toString()
@@ -138,8 +138,10 @@ const Edit = props => {
         )
       )
     })
+
+    const savedtags = tags ? tags : '[]';
     
-    setSelectedTags(JSON.parse(tags))
+    setSelectedTags(JSON.parse(savedtags))
 
   }, [])
    
